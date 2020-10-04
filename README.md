@@ -1,10 +1,11 @@
 # Train an Agent to Collect Bananas
 
-_ For this project, we have a trained agent that navigates an enviroment and collect bananas! in a large, square world.
+In this project, we have a trained agent that navigates an enviroment and collects yellow bananas! in a large, square world.
 
-_ Below is trained agent
+*Below is trained agent*
 
-- GIF
+
+![alt text](https://github.com/otichibueze/navigation_project/blob/master/bananna.gif)
 
 
 ### Enviroment State  Action Reward
@@ -55,32 +56,19 @@ oscillating or diverging catastrophically.
 
 
 **Double Deep Q-Network (DDQN)**
-Q-learning is a model-free reinforcement learning algorithm to learn a policy telling an agent what action to take under what circumstances. The neural network architecture used for this project can be found [here](link) in the model.py file. here is one major issue with Q-learning that we need to deal with: over-estimation bias, which means that the Q-values learned are actually higher than they should be. Mathematically, maxaQ(st+1, a) converges to E(maxaQ(st+1, a)), which is higher than maxa(E(Q(st+1, a)), the true Q-value. To get more accurate Q-values, we use something called double Q-learning. In double Q-learning we have two Q-tables: one which we use for taking actions, and another specifically for use in the Q-update equation. The double Q-learning update equation is:
-
-Q*(st, at)←Q*(st, at) + α(rt+1 + γmaxaQT(st+1, a) - Q*(st, at))
-
-where Q* is the Q table that gets updated, and QT is the target table. QT copies the values of Q* every n steps.
-[More](https://arxiv.org/abs/1509.06461)
+Q-learning is a model-free reinforcement learning algorithm to learn a policy telling an agent what action to take under what circumstances. The neural network architecture used for this project can be found [here](link) in the model.py file. here is one major issue with Q-learning that we need to deal with: over-estimation bias, which means that the Q-values learned are actually higher than they should be. Mathematically, maxaQ(st+1, a) converges to E(maxaQ(st+1, a)), which is higher than maxa(E(Q(st+1, a)), the true Q-value. To get more accurate Q-values, we use something called double Q-learning. In double Q-learning we have two Q-tables: one which we use for taking actions, and another specifically for use in the Q-update equation. [Research paper](https://arxiv.org/abs/1509.06461)
 
 
 **Dueling Network Architectures**
-Dueling networks utilize two streams: one that estimates the state value function V(s), and another that estimates the advantage for each action A(s,a). These two values are then combined to obtain the desired Q-values. The neural network architecture used for this project can be found [here](link) in the dueling_model.py file. The dueling architecture shares the same input-output interface with the standard DQN architecture, the training process is identical. We define the loss of the model as the mean squared error:
+Dueling networks utilize two streams: one that estimates the state value function V(s), and another that estimates the advantage for each action A(s,a). These two values are then combined to obtain the desired Q-values. The neural network architecture used for this project can be found [here](link) in the dueling_model.py file. The dueling architecture shares the same input-output interface with the standard DQN architecture, the training process is identical. We define the loss of the model as the mean squared error.[Research paper](https://arxiv.org/abs/1511.06581)
 
-
-[Image]()
-
-[More](https://arxiv.org/abs/1511.06581)
-
+![alt text](https://github.com/otichibueze/navigation_project/blob/master/dueling-networks-slide.png)
 
 
 **Prioritized Experience Replay**
 Prioritized Experience Replay is a type of experience replay in reinforcement learning where we In more frequently replay transitions with high expected learning progress, as measured by the magnitude of their temporal-difference (TD) error. This prioritization can lead to a loss of diversity, which is alleviated with stochastic prioritization, and introduce bias, which can be corrected with importance sampling.
 
-The stochastic sampling method interpolates between pure greedy prioritization and uniform random sampling. The probability of being sampled is ensured to be monotonic in a transition's priority, while guaranteeing a non-zero probability even for the lowest-priority transition. 
-
-[More](https://arxiv.org/abs/1511.05952)
-
-
+The stochastic sampling method interpolates between pure greedy prioritization and uniform random sampling. The probability of being sampled is ensured to be monotonic in a transition's priority, while guaranteeing a non-zero probability even for the lowest-priority transition. [Research paper](https://arxiv.org/abs/1511.05952)
 
 
 ### Run Experiments
@@ -88,17 +76,22 @@ The best performing agents were able to solve the environment in 300-500 episode
 
 **View Agents Performance**
 
--image
+![alt text](https://github.com/otichibueze/navigation_project/blob/master/chart.png)
 
-[Notebook]()
+
+
+The Notebook for this experiments can be found [here](https://github.com/otichibueze/navigation_project/blob/master/Report.ipynb)
+
+
+
 
 
 ### Future Improvements
-Implement Rainbow: Combining Improvements in DQN — This approach is explained here in this [research paper](). 
-Implement A Distributional Perspective on Reinforcement Learning  — This approach is explained here in this [research paper](). 
+Implement Rainbow: Combining Improvements in DQN — This approach is explained here in this [research paper](https://arxiv.org/abs/1710.02298). 
+Implement A Distributional Perspective on Reinforcement Learning  — This approach is explained here in this [research paper](https://arxiv.org/pdf/1707.06887.pdf). 
 
 Train agent and compare performance.
 
 
 #### Instructions
-Follow the instructions in Navigation.ipynb to get started with training your own agent!
+Follow the instructions in [Navigation.ipynb](https://github.com/otichibueze/navigation_project/blob/master/Navigation.ipynb) to get started with training your own agent!
